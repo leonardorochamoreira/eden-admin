@@ -1,0 +1,21 @@
+<ion-view view-title="Eventos">
+  <ion-content  style="background-color: #ebebe0">
+<br><br><br>
+
+    <strong><h1 align="center">Lista de eventos</h1><strong>
+
+      <br>
+    <a href="#/app/novo_evento" class="button button-block button-positive" >Criar Evento<span style="font-size:x-large" class="ion-ios-plus-outline"></span></a>
+    <br>
+      <ion-list>
+      <ion-item ng-repeat="x in eventos" ng-href="#/app/detalhes_evento/{{x.id}}" style="background:#ebebe0" align="left">
+
+       <img src="http://api-eden.cursophprj.com.br/img/eventos/{{x.img}}" width="10%" height="10%">
+       <h2> <strong > {{x.titulo}} - {{x.sub_titulo}}  <!--{{x.descricao}}--> - {{x.data_evento}} </strong> </h2>
+       <a href="#" ng-click="excluir_evento(x.id)" class="button  button-assertive"  >Excluir</a>
+       <a href="#/app/atualizar_evento/{{x.id}}" class="button  button-royal">Atualizar</a>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

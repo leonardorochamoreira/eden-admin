@@ -1,0 +1,23 @@
+<ion-view view-title="Detalhes do evento" >
+  <ion-content style="align-content: center">
+<br>
+
+<form >
+<div align="center">
+
+  <a href="#/app/usuarios_eventos/{{evento_selecionado.id}}" class=" button button-balanced  button-block " style="width: 25%">{{quantidade_usuarios + " usuarios confirmados"}}</a>
+
+    <br>
+
+    <img src="http://api-eden.cursophprj.com.br/img/eventos/{{evento_selecionado.img}}" >
+  <h2> Descrição: </h2>
+
+  <p>
+    {{evento_selecionado.descricao}}
+    </p>
+
+</div>
+</form>
+
+  </ion-content>
+</ion-view>

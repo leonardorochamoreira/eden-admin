@@ -1,0 +1,44 @@
+<ion-view view-title="Atualizar Evento">
+<br><br><br>
+
+  <ion-content>
+    <br>
+    <form ng-submit="atualizar_evento(Evento)">
+
+      <h3 align="center">Atualização do Evento</h3>
+      <div class="list">
+
+        <input type="hidden" ng-model="Evento.id">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Título do evento</span>
+          <input type="text" placeholder="Qual é o titulo?" ng-model="Evento.titulo">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Sub titulo</span>
+          <input type="text" placeholder="Qual é o sub titulo" ng-model="Evento.sub_titulo">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Descricao</span>
+          <textarea placeholder="Descricao do evento" ng-model="Evento.descricao"></textarea>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Data do evento</span>
+          <input type="text" placeholder="Data do evento" ng-model="Evento.data_evento" >
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Foto do documento</span>
+          <input name="file" type="file" file-model="Evento.img"/>
+        </label>
+        <div class="padding">
+          <button class="button button-block button-positive" ng-hide="nao_exibir_loading==false">Atualizar</button>
+        </div>
+
+        <div align="center">
+          <ion-spinner  ng-hide="nao_exibir_loading==true" icon="bubbles" class="spinner spinner-ripple"><svg viewBox="0 0 64 64"><g fill="none" fill-rule="evenodd" stroke-width="3"><circle cx="32" cy="32" r="20.7607"><animate attributeName="r" begin="0s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="0s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle><circle cx="32" cy="32" r="2.87154"><animate attributeName="r" begin="-1s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="-1s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle></g></svg></ion-spinner>
+        </div>
+
+      </div>
+
+
+  </ion-content>
+</ion-view>
