@@ -180,7 +180,7 @@ app.service('UsuarioService', ['$http', function ($http) {
       .success(function(){
 
         alert("Adicionado com sucesso!");
-        $state.go("app.usuarios_eventos",{reload: true});
+        $state.go("app.usuarios_eventos",{evento_id:evento_id,reload: true});
         $scope.nao_exibir_loading = true;
         //window.location.assign("http://localhost/eden/www/#/app/usuarios_eventos")
       })
