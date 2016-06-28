@@ -38,7 +38,7 @@ var app = angular.module('app_eden', ['ionic', 'app_eden.controllers'])
     })
 
     .state('app.novo_usuario', {
-      url: '/novo_usuario',
+      url: '/novo_usuario/:evento_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/novo_usuario.html',
@@ -163,9 +163,12 @@ app.service('EventoService', ['$http', function ($http,$scope) {
 
 
 app.service('UsuarioService', ['$http', function ($http) {
-  this.add = function(Usuario,url_upload,$state,$scope){
+
+  this.add = function(Usuario,url_upload,$state,$scope,evento_id){
+
+    //alert(evento_id); return false;
     var fd = new FormData();
-    fd.append('id', Usuario.id);
+    fd.append('eventos_id', evento_id);
     fd.append('file', Usuario.img);
     fd.append('nome', Usuario.nome);
     fd.append('email', Usuario.email);

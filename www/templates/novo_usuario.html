@@ -2,10 +2,12 @@
   <br><br><br>
   <ion-content>
     <br>
-    <form ng-submit="adicionar_usuario(Usuario)">
+    <form ng-submit="adicionar_usuario(Usuario,evento_id)">
 
       <h3 align="center">Novo Usuario</h3>
       <div class="list">
+        <!--<input type="text" ng-model="Usuario.evento_id">-->
+
         <label class="item item-input item-floating-label">
           <span class="input-label">Nome do Usuario</span>
           <input type="text" placeholder="Qual o nome do usuario ?" ng-model="Usuario.nome">

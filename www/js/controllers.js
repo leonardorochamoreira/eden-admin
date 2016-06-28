@@ -67,18 +67,20 @@ angular.module('app_eden.controllers', [])
   })
 
 
-  .controller('NovoUsuarioCtrl', function($scope,$http,$state,UsuarioService) {
+  .controller('NovoUsuarioCtrl', function($scope,$http,$state,$stateParams,UsuarioService) {
 
+    $scope.evento_id  = $stateParams.evento_id;
+    
     $scope.nao_exibir_loading = true;
 
-    $scope.adicionar_usuario = function(Usuario){
+    $scope.adicionar_usuario = function(Usuario,evento_id){
 
     $scope.nao_exibir_loading = false;
 
-      var url_upload = "http://api-eden.cursophprj.com.br/usuario/insert";
+      var url_upload = "http://api-eden.cursophprj.com.br/usuario_evento/insert";
       //var url_upload = "http://localhost/eden/api/eventos/insert";
-      UsuarioService.add(Usuario,url_upload,$state);
 
+      UsuarioService.add(Usuario,url_upload,$state,$scope,evento_id);
 
       //var url_upload = "http://api-eden.cursophprj.com.br/eventos/list";
       //var url_upload = "http://localhost/eden/api/eventos/insert";
@@ -116,11 +118,13 @@ angular.module('app_eden.controllers', [])
   })
 
 
-  .controller('UsuariosEventosCtrl', function($scope,$http) {
+  .controller('UsuariosEventosCtrl', function($scope,$http,$stateParams) {
+
+    $scope.evento_id = $stateParams.evento_id;
 
     $scope.nao_exibir_loading=false;
 
-    $http.get("http://api-eden.cursophprj.com.br/usuario/list") .then(function(response) {
+    $http.get("http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id) .then(function(response) {
 
       $scope.quantidade_usuarios = (response.data.rowCount);
 
@@ -188,7 +192,10 @@ angular.module('app_eden.controllers', [])
 
 
 .controller('DetalheEventoCtrl', function($scope,$stateParams,$http) {
-  $http.get("http://api-eden.cursophprj.com.br/usuario/list") .then(function(response) {
+
+  $scope.evento_id = $stateParams.evento_id;
+
+  $http.get("http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id) .then(function(response) {
 
     $scope.quantidade_usuarios = (response.data.rowCount);
   });
