@@ -168,8 +168,9 @@ app.service('UsuarioService', ['$http', function ($http) {
 
     //alert(evento_id); return false;
     var fd = new FormData();
+    fd.append('id', Usuario.id);
     fd.append('eventos_id', evento_id);
-    fd.append('file', Usuario.img);
+    fd.append('img_documento', Usuario.img_documento);
     fd.append('nome', Usuario.nome);
     fd.append('email', Usuario.email);
 
@@ -188,10 +189,11 @@ app.service('UsuarioService', ['$http', function ($http) {
       });
   };
 
-  this.update = function(Evento,url_upload,$state){
+  this.update = function(Usuario,url_upload,$state){
     var fd = new FormData();
     fd.append('id', Usuario.id);
-    fd.append('file', Usuario.img);
+    fd.append('eventos_id', evento_id);
+    fd.append('img_documento', Usuario.img_documento);
     fd.append('nome', Usuario.nome);
     fd.append('email', Usuario.email);
 
