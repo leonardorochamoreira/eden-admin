@@ -67,29 +67,6 @@ angular.module('app_eden.controllers', [])
   })
 
 
-  .controller('NovoUsuarioCtrl', function($scope,$http,$state,$stateParams,UsuarioService) {
-
-    $scope.evento_id  = $stateParams.evento_id;
-    
-    $scope.nao_exibir_loading = true;
-
-    $scope.adicionar_usuario = function(Usuario,evento_id){
-
-    $scope.nao_exibir_loading = false;
-
-      var url_upload = "http://api-eden.cursophprj.com.br/usuario_evento/insert";
-      //var url_upload = "http://localhost/eden/api/eventos/insert";
-
-      UsuarioService.add(Usuario,url_upload,$state,$scope,evento_id);
-
-      //var url_upload = "http://api-eden.cursophprj.com.br/eventos/list";
-      //var url_upload = "http://localhost/eden/api/eventos/insert";
-      //UsuarioService.add(Usuario,url_upload,$state,$scope);
-
-      };
-  })
-
-
   .controller('EventosCtrl', function($scope,$http) {
 
     $http.get("http://api-eden.cursophprj.com.br/eventos") .then(function(response) {
@@ -118,44 +95,54 @@ angular.module('app_eden.controllers', [])
   })
 
 
-  .controller('UsuariosEventosCtrl', function($scope,$http,$stateParams) {
+    .controller('NovoUsuarioCtrl', function($scope,$http,$state,$stateParams,UsuarioService) {
+
+      $scope.evento_id  = $stateParams.evento_id;
+
+      $scope.nao_exibir_loading = true;
+
+      $scope.adicionar_usuario = function(Usuario,evento_id){
+
+        $scope.nao_exibir_loading = false;
+
+        var url_upload = "http://api-eden.cursophprj.com.br/usuario_evento/insert";
+        //var url_upload = "http://localhost/eden/api/eventos/insert";
+
+        UsuarioService.add(Usuario,url_upload,$state,$scope,evento_id);
+
+        //var url_upload = "http://api-eden.cursophprj.com.br/eventos/list";
+        //var url_upload = "http://localhost/eden/api/eventos/insert";
+        //UsuarioService.add(Usuario,url_upload,$state,$scope);
+
+      };
+    })
+
+
+    .controller('UsuariosEventosCtrl', function($scope,$http,$stateParams) {
 
     $scope.evento_id = $stateParams.evento_id;
 
     $scope.nao_exibir_loading=false;
 
-    $http.get("http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id) .then(function(response) {
+    $scope.localizarUsuarios = function (pesquisar) {
 
-      $scope.quantidade_usuarios = (response.data.rowCount);
-
-      $scope.lista_usuarios = (response.data.data_usuarios);
-    });
-
-    $http.get("http://api-eden.cursophprj.com.br/usuario/list") .then(function(response) {
-      $scope.eventos = (response.data.data_usuarios);
-
-    });
-
-    $scope.excluir_evento = function (id) {
-      $http.post('http://api-eden.cursophprj.com.br/eventos/delete', {'id':id});
-      alert("Excluido com sucesso!");
-    };
+      if(pesquisar){
+        $http.get(" http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id+"/"+pesquisar) .then(function(response) {
+          $scope.quantidade_usuarios = (response.data.rowCount);
+          $scope.lista_usuarios = (response.data.data_usuarios);
+        });
+      }else{
+        $scope.listarTodosUsuarios();
+      }
 
 
+    }
     $scope.listarTodosUsuarios = function () {
-      $http.get(" http://api-eden.cursophprj.com.br/usuario/list") .then(function(response) {
+      $http.get(" http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id) .then(function(response) {
+        $scope.quantidade_usuarios = (response.data.rowCount);
         $scope.lista_usuarios = (response.data.data_usuarios);
       });
     };
-
-    $scope.excluir_evento = function (id) {
-      $http.post('http://api-eden.cursophprj.com.br/eventos/delete', {'id':id})
-        .success(function (){
-            $scope.listarTodosUsuarios();
-          }
-        );
-    }
-
   })
 
 
