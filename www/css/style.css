@@ -1,3 +1,34 @@
 .spinner svg {
   width: 90px;
   height: 90px; }
+
+.pane, .view {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bar.bar-stable .title {
+  color: white;
+}
+
+.bar.bar-stable {
+  border-color: #b2b2b2;
+  background-color: black;
+  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, black 50%);
+  color: black;
+}
+
+.bar-stable .button.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: white;
+  font-size: 25px;
+}
+
