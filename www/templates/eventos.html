@@ -1,12 +1,11 @@
 <ion-view view-title="Eventos">
-  <ion-content  style="background-color: #ebebe0">
+  <ion-content  style="background-color: #f5f5f0">
 <br><br><br>
 
     <strong><h1 align="center">Lista de eventos</h1><strong>
 
       <br>
-    <a href="#/app/novo_evento" class="button button-block button-positive" >Criar Evento<span style="font-size:x-large" class="ion-ios-plus-outline"></span></a>
-    <br>
+    <a href="#/app/novo_evento" class="button button-block button-positive" style="margin-bottom: auto">Criar Evento<span class="ion-ios-plus-outline" ></span></a>
       <ion-list>
       <ion-item ng-repeat="x in eventos" ng-href="#/app/detalhes_evento/{{x.id}}" style="background:#ebebe0" align="left">
 
