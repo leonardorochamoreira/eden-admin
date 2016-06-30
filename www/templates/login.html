@@ -9,16 +9,19 @@
     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Username</span>
+          <span class="input-label" style="font-size: 20px" ><strong>Email :</strong></span>
           <input type="text" ng-model="loginData.username">
         </label>
         <label class="item item-input">
-          <span class="input-label">Password</span>
+          <span class="input-label" style="font-size: 20px"><strong>Senha :</strong></span>
           <input type="password" ng-model="loginData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
+
+        <br>
+
+         <p>align="center"><a href="#/app/cadastrar_usuario" class="button button-block button-positive" ><p style="font-size: 15px">Entrar</p></a></p>
+        <p>align="center"><a href="#/app/cadastrar_usuario" class="button button-block button-assertive" ><p>Não sou cadastrado</p></a></p>
+
       </div>
     </form>
   </ion-content>

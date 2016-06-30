@@ -60,7 +60,7 @@ angular.module('app_eden.controllers', [])
 
       var url_upload = "http://api-eden.cursophprj.com.br/eventos/insert";
       //var url_upload = "http://localhost/eden/api/eventos/insert";
-      EventoService.add(Evento,url_upload,$state);
+      EventoService.add(Evento,url_upload,$state,$scope);
 
 
     };
@@ -127,7 +127,7 @@ angular.module('app_eden.controllers', [])
     $scope.localizarUsuarios = function (pesquisar) {
 
       if(pesquisar){
-        $http.get(" http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id+"/"+pesquisar) .then(function(response) {
+        $http.get(" http://api-eden.cursophprj.com.br/usuario/list/"+pesquisar) .then(function(response) {
           $scope.quantidade_usuarios = (response.data.rowCount);
           $scope.lista_usuarios = (response.data.data_usuarios);
         });
@@ -138,7 +138,7 @@ angular.module('app_eden.controllers', [])
 
     }
     $scope.listarTodosUsuarios = function () {
-      $http.get(" http://api-eden.cursophprj.com.br/usuario/list/"+$scope.evento_id) .then(function(response) {
+      $http.get(" http://api-eden.cursophprj.com.br/usuario/list") .then(function(response) {
         $scope.quantidade_usuarios = (response.data.rowCount);
         $scope.lista_usuarios = (response.data.data_usuarios);
       });
@@ -171,7 +171,7 @@ angular.module('app_eden.controllers', [])
         $scope.nao_exibir_loading = false;
       var url_upload = "http://api-eden.cursophprj.com.br/eventos/update";
       //var url_upload = "http://localhost/eden/api/eventos/update";
-      EventoService.update(Evento,url_upload,$state);
+      EventoService.update(Evento,url_upload,$state,$scope);
       //$http.post('http://api-eden.cursophprj.com.br/eventos/update', {'id':Evento.id,'titulo':Evento.titulo,sub_titulo:Evento.sub_titulo,'descricao':Evento.descricao,'data_evento':Evento.data_evento});
       //alert("Atualizado com sucesso!");
     }
@@ -195,4 +195,9 @@ angular.module('app_eden.controllers', [])
 
   })
 
-});
+
+      .controller('UsuariosEventosCtrl', function($scope,$http,$stateParams) {
+
+      })
+  });
+

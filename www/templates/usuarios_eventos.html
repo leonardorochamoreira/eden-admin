@@ -19,7 +19,11 @@
         <ion-item ng-repeat="x in lista_usuarios"   ng-href="" style="background:#ebebe0" align="left">
 
           <img src="http://api-eden.cursophprj.com.br/img/documento_perfil/{{x.img_documento}}" width="10%" height="10%">
-          <h2> <strong >{{x.nome}} - {{x.email}}  </strong> </h2>
+          <h2> <strong >{{x.nome}} - {{x.email}}  </strong>
+
+          </h2>
+
+          {{x}}
 
         </ion-item>
       </ion-list>

@@ -47,6 +47,15 @@ var app = angular.module('app_eden', ['ionic', 'app_eden.controllers'])
       }
     })
 
+      .state('app.cadastrar_usuario', {
+        url: '/novo_usuario',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/cadastrar_usuario.html',
+            controller: 'CadastrarUsuarioCtrl'
+          }
+        }
+      })
 
     .state('app.eventos', {
       url: '/eventos',
@@ -110,10 +119,10 @@ app.directive('fileModel', ['$parse', function ($parse) {
   };
 }]);
 
-app.service('EventoService', ['$http', function ($http,$scope) {
-  this.add = function(Evento,url_upload,$state){
+app.service('EventoService', ['$http', function ($http) {
+  this.add = function(Evento,url_upload,$state,$scope){
     var fd = new FormData();
-    fd.append('file', Evento.img);
+    fd.append('img', Evento.img);
     fd.append('titulo', Evento.titulo);
     fd.append('sub_titulo', Evento.sub_titulo);
     fd.append('descricao', Evento.descricao);
@@ -134,10 +143,10 @@ app.service('EventoService', ['$http', function ($http,$scope) {
       });
   };
 
-  this.update = function(Evento,url_upload,$state){
+  this.update = function(Evento,url_upload,$state,$scope){
     var fd = new FormData();
     fd.append('id', Evento.id);
-    fd.append('file', Evento.img);
+    fd.append('img', Evento.img);
     fd.append('titulo', Evento.titulo);
     fd.append('sub_titulo', Evento.sub_titulo);
     fd.append('descricao', Evento.descricao);
