@@ -1,0 +1,52 @@
+<ion-view view-title="Cadastro do Usuario" ">
+  <br><br><br>
+  <ion-content>
+    <br>
+
+    <form ng-submit="">
+
+      <h3 align="center">Cadastrar-me</h3>
+      <div class="list">
+
+        <input type="hidden" ng-model="">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nome do Usuario</span>
+          <input type="text" placeholder="Nome coompleto" ng-model="">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email do Usuario</span>
+          <input type="text" placeholder="Email do usuario" ng-model="Usuario.email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Senha</span>
+          <input type="password" placeholder="Senha do usuario" ng-model="Usuario.email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Foto do documento</span>
+          <input name="img" type="file" file-model="Usuario.img_documento"/>
+        </label>
+
+        <div class="padding" ng-show="Usuario.nome && Usuario.email && Usuario.img_documento">
+          <button class="button button-block button-positive" ng-hide="nao_exibir_loading==false">Salvar</button>
+        </div>
+
+        <div align="center">
+        <ion-spinner  ng-hide="nao_exibir_loading==true" icon="bubbles" class="spinner spinner-ripple"><svg viewBox="0 0 64 64"><g fill="none" fill-rule="evenodd" stroke-width="3"><circle cx="32" cy="32" r="20.7607"><animate attributeName="r" begin="0s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="0s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle><circle cx="32" cy="32" r="2.87154"><animate attributeName="r" begin="-1s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="-1s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle></g></svg></ion-spinner>
+        </div>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
